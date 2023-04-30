@@ -4,10 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    
     <title>Registration</title>
 
 
     <?php
+
+    function getValue($key) {
+
+        if (isset($_POST[$key])) {
+
+            $value = htmlspecialchars($key);
+            $value = trim($key);
+
+            return $value;
+
+        } else {
+
+            return "";
+
+        }
+
+    }
 
         error_reporting(E_ALL);
         ini_set('display_errors', '1');
@@ -29,7 +49,7 @@
 
                 if ($tableRow) {
 
-                    echo "<p> That username already exists! Please try again.";
+                    echo "<p class=w3-text-red> That username already exists! Please try again. </p>";
 
                 } else {
                 
@@ -60,10 +80,10 @@
 </head>
 <body>
 
-    <h2> You were redirected to this page for one of two reasons.</h2>
+    <h2 class="w3-text-red"> You were redirected to this page for one of two reasons.</h2>
     <p> If you are a new user, welcome! Glad you're here. To access our website, you will need a username and a password. </p>
     <p> Your username must be unique to YOU- if someone's taken your username, no worries, you'll just be redirected right back here.</p>
-    <p> If you forgot your password, you must create a new username and password. Again, make sure your username isn't taken!</p>
+    <p class="w3-text-red"> If you forgot your password, you must create a new username and password. Again, make sure your username isn't taken!</p>
     <p> Finally, click submit to, well, submit your information! </p>
     <p> Once you're done, you'll be redirected to the login page. </p>
    

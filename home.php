@@ -2,133 +2,37 @@
 <html>
     <head>
     <link rel="stylesheet" href="stylesheet.css"></link>
-    <script src="test.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $(".buttons1").click(function(){
-                $(".buttons1").hide();
-                $(".buttons2").hide();
-                $(".buttons3").hide();
-                $(".preflight").show();
-                $(".header").hide();
-            });
-            $(".metar_explain_button").click(function() {
-                $(".metar_explain").show();
-            });
-            $(".buttons2").click(function() {
-                $(".buttons1").hide();
-                $(".buttons2").hide();
-                $(".buttons3").hide();
-                $(".enrolling").show();
-                $(".header").hide();
-            });
-            $(".buttons3").click(function() {
-                $(".buttons1").hide();
-                $(".buttons2").hide();
-                $(".buttons3").hide();
-                $(".checkride").show();
-                $(".header").hide();
-            });
-        });
-    </script>
-    <title> SIU Aviation </title>
-    </head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
     
-    <body>
-    
-    <h1 class= "strong"> Welcome to SIU Aviation! </h1>
-    
-    <p id="currentTime"></p>
-    <p id="currentUTCTime"></p>
-    <p id="activeFlightBlock"></p>
-    <p id="holidayOrNot">
-    
-        <script>
-            holidayResponse = holidayOrNot();
-            if (holidayResponse == "Summer Intersession") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[0];
-            } else if (holidayResponse == "Summer Session") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[1];
-            } else if (holidayResponse == "Regular Session") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[2];
-            } else if (holidayResponse == "Labor Day") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[3];
-            } else if (holidayResponse == "Veterans Day") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[4];
-            } else if (holidayResponse == "Thanksgiving Break") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[5];
-            } else if (holidayResponse == "Thanksgiving") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[6];
-            } else if (holidayResponse == "Finals") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[7];
-            } else if (holidayResponse == "Winter Commencement") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[8];
-            } else if (holidayResponse == "Winter Intersession") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[9];
-            } else if (holidayResponse == "Winter Break") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[10];
-            } else if (holidayResponse == "MLK Day") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[11];
-            } else if (holidayResponse == "Spring Break") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[12];
-            } else if (holidayResponse == "Spring Commencement") {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[13];
-            } else {
-                document.getElementById("holidayOrNot").innerHTML = holidayResponseArray[2];
-            }
+    </p>
 
-        </script>
-    </p>
-    
-    <p id="timeUntilBlock">
-        <script>
-            let countdown = countdownToBlock();
-            document.getElementById("timeUntilBlock").innerHTML = "There are " + countdown[0] + " hours and " + countdown[1] +
-            " minutes left until check-in for the next flight block begins.";
-        </script>
-    </p>
-    <script>
-        // initializes pertinent functions
-        currentTime();
-        currentUTCTime();
-        displayFlightBlock();
-        countdownToBlock();
-        getMETAR();
-    </script>
     <div class="header">
     <h1 style="text-align: center; border-bottom: 6px solid #660000;"> Start Here! </h1>
-    <h4 style="text-align: center;">What would you like to do today?</h4>
-    </div>
-    <button class="buttons1">I want to fly today</button>
-    <button class="buttons2">I want to learn more about the flight program</button>
-    <button class="buttons3">I want to prepare for a checkride</button>
-
-    <div class="preflight">
+    
         <br>
         <h1 style="text-align: center">Before you fly, consider these items.</h1>
         <h3> Current Weather (METAR) </h3>
     
         <p id="METAR"> </p>
         
-        <button type="button" class="metar_explain_button">How do I read a METAR?</button>
-        <div class="metar_explain">
+        
+        <div class="w3-card w3-containermetar_explain">
             <p>A typical METAR is formatted like this:</p>
             <p>KMDH 152052Z 36005KT 10SM FEW043 31/22 A2992 RMK (other stuff)</p>
-            <p>KMDH is the airport this METAR is being reported at.</p>
-            <p>15 represents the day of the month the METAR was issued on (in this case, the 15th of the month), and 2052Z represents the Zulu time 
+            <p><p class="w3-text-red"> KMDH </p> is the airport this METAR is being reported at.</p>
+            <p><p class="w3-text-red"> 15 </p> represents the day of the month the METAR was issued on (in this case, the 15th of the month), and 2052Z represents the Zulu time 
                 at which the METAR was issued (in this case, 20:52 hours or 8:52 PM).
             </p>
-            <p>36005KT represents the wind direction and speed. In this case, the winds are out of a heading of 360,
+            <p> <p class="w3-text-red"> 36005KT </p> represents the wind direction and speed. In this case, the winds are out of a heading of 360,
                 and the wind speed is 5 knots. If the wind speed is below 10 knots, the speed will include a leading zero (hence, 05 equals 5). If there are gusts reported,
                 the gust speed will be included on the METAR, prefixed by the capital letter G. For example, 36005G15KT means the winds are out of a heading of 360
                 degrees, the wind speed is 5 knots, and the gust speed is 15 knots.
             </p>
-            <p>10SM represents the visibility. In this case, the visibility is 10 statute miles.</p>
-            <p>FEW043 represents the cloud cover. In this case, there are few clouds at 4,300 feet above ground level.</p>
-            <p>31/22 represents the temperature/dewpoint in Celsius (respectively).</p>
-            <p>A2992 represents the altimeter setting. In this case, the altimeter setting is 29.92.</p>
-            <p>RMK and anything after it represents additional remarks.</p>
+            <p> <p class="w3-text-red"> 10SM </p> represents the visibility. In this case, the visibility is 10 statute miles.</p>
+            <p> <p class="w3-text-red"> FEW043 </p> represents the cloud cover. In this case, there are few clouds at 4,300 feet above ground level.</p>
+            <p> <p class="w3-text-red"> 31/22 </p> represents the temperature/dewpoint in Celsius (respectively).</p>
+            <p> <p class="w3-text-red"> A2992 </p> represents the altimeter setting. In this case, the altimeter setting is 29.92.</p>
+            <p> <p class="w3-text-red"> RMK </p> and anything after it represents additional remarks.</p>
 
         </div>
         
@@ -155,16 +59,16 @@
         </ul>
         <h2 class="section_start"> IMSAFE </h2>
         <h3>This checklist allows you to take a granular look at your current wellbeing and fitness to fly.</h3>
-        <strong><p> Illness: </strong> Are you sick? </p>
-        <strong><p> Medication: </strong> Are you taking medication that impairs your ability to flying?</p>
-        <strong><p> Stress: </strong> Are you stressed to a degree that will interfere with your ability to fly? </p>
-        <strong><p> Alcohol: </strong> Have you had a drink within the past 8 hours? Do you feel hung over?</p>
-        <strong><p> Fatigue:</strong> Are you tired to the point where you can't fly safely? </p>
+        <strong class="w3-text-green"><p> Illness: </strong> Are you sick? </p>
+        <strong class="w3-text-purple"><p> Medication: </strong> Are you taking medication that impairs your ability to flying?</p>
+        <strong class="w3-text-red"><p> Stress: </strong> Are you stressed to a degree that will interfere with your ability to fly? </p>
+        <strong class="w3-text-brown"><p> Alcohol: </strong> Have you had a drink within the past 8 hours? Do you feel hung over?</p>
+        <strong class="w3-text-teal"><p> Fatigue:</strong> Are you tired to the point where you can't fly safely? </p>
         <strong><p> Emotion:</strong> Is it just not your day? </p>
-        <p>If ANY of these are true for you, DO NOT FLY!! </p>
+        <p>If ANY of these are true for you, <strong class="w3-text-red"> DO NOT FLY!! </strong> </p>
 
         <h2 class="section_start"> PAVE </h2>
-        <h3>The PAVE checklist is a great way to assess the risks of a flight</h3>
+        <h3>The <strong class="w3-text-red"> PAVE </strong> checklist is a great way to assess the risks of a flight</h3>
         <strong><p> Pilot: </strong> This is the "you factor." Are you fit to fly? Are you comfortable with the conditions? Are you rated for the aircraft you're flying? </p>
         <strong><p> Aircraft: </strong> This focuses on the aircraft you will be flying. Is it airworthy? Will it work for your mission? </p>
         <strong><p> enVironment: </strong> This focuses on the environment you will be flying in. What is the weather like? Have you flown in this weather? Are you comfortable flying SOLO (not dual) in this weather?</p>
@@ -464,20 +368,6 @@
             specific flight lessons
             in the PA28R (Piper Arrow) aircraft during AF207A. Use of this aircraft is prohibited outside of these specific
             lessons in AF207A.
-        </p>
-    
-        <h3 class="section_start"> Stage/Graduation Checks</h3>
-        <p> At the end of every flight course, the student will undergo a Stage/Graduation Check with the Chief Flight
-            Instructor or an Assistant Chief Flight Instructor.
-            Stage/Graduation Checks consist of an oral exam and flight exam, just like an FAA checkride. Students must
-            satisfactorily complete all Areas of Operation
-            for their particular Check in order for the exam to be considered satisfactory. Learn more about stage checks
-            and checkrides by clicking this link <a href="checkride.html">here.</a>
-        </p>
-        
-        <h3 class="section_start">Where will I begin?</h3>
-        <p>Although course progression throughout the flight program is strictly linear, you may be able to skip certain flight courses if you already have flight experience
-            upon entering the program. Visit <a href="courses.html">this</a> page for more information.
         </p>
         
     
